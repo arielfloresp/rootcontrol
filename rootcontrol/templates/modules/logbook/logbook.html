@@ -1,0 +1,85 @@
+{% extends 'baseDash.html'%}
+
+{% block content %}
+
+<div class="pagetitle">
+  <h1>Bitácora</h1>
+  <nav>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+      <li class="breadcrumb-item">Bitácora</li>
+    </ol>
+  </nav>
+</div><!-- End Page Title -->
+
+<div class="row">
+  <div class="col-lg-6">
+
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Información</h5>
+
+        <!-- Floating Labels Form -->
+        <form class="row g-3">
+          <div class="col-md-12">
+            <div class="form-floating">
+              <input type="text" class="form-control" id="floatingName" placeholder="Usuario">
+              <label for="floatingName">Usuario</label>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-floating">
+              <input type="email" class="form-control" id="floatingEmail" placeholder="Email">
+              <label for="floatingEmail">Email</label>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-floating">
+              <input type="password" class="form-control" id="floatingPassword" placeholder="Contraseña">
+              <label for="floatingPassword">Contraseña</label>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="form-floating">
+              <input type="text" class="form-control" id="floatingName" placeholder="Datacenter">
+              <label for="floatingName">Datacenter</label>
+            </div>
+          </div>
+          
+          <div class="text-center">
+            <button type="submit" class="btn btn-success">Confirmar</button>
+            <button type="reset" class="btn btn-danger">Cancelar</button>
+          </div>
+        </form><!-- End floating Labels Form -->
+
+      </div>
+    </div>
+
+  </div>
+
+  <div class="col-lg-6">
+
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Bitácora</h5>
+
+        <!-- Floating Labels Form -->
+        <form class="row g-3">
+          <div class="col-12">
+            <div class="form-floating">
+              <textarea class="form-control" placeholder="Bitácora" id="floatingTextarea" style="height: 200px;"></textarea>
+              <label for="floatingTextarea">Bitácora</label>
+            </div>
+          </div>
+          <div class="text-center">
+            <button type="submit" class="btn btn-primary">Envíar</button>
+            <button type="reset" class="btn btn-danger">Cancelar</button>
+          </div>
+        </form><!-- End floating Labels Form -->
+
+      </div>
+    </div>
+
+  </div>
+</div>
+{% endblock %}
