@@ -1,85 +1,91 @@
-{% extends 'baseDash.html'%}
+{% extends 'baseDash.html' %}
 
 {% block content %}
 
 <div class="pagetitle">
-  <h1>Bitácora</h1>
+  <h1>Logbook</h1>
   <nav>
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-      <li class="breadcrumb-item">Bitácora</li>
+      <li class="breadcrumb-item">Logbook</li>
     </ol>
   </nav>
 </div><!-- End Page Title -->
 
 <div class="row">
   <div class="col-lg-6">
-
     <div class="card">
       <div class="card-body">
-        <h5 class="card-title">Información</h5>
-
-        <!-- Floating Labels Form -->
-        <form class="row g-3">
-          <div class="col-md-12">
-            <div class="form-floating">
-              <input type="text" class="form-control" id="floatingName" placeholder="Usuario">
-              <label for="floatingName">Usuario</label>
+        <h5 class="card-title">Information</h5>
+        <!-- Formulario deshabilitado -->
+        <fieldset disabled>
+          <form class="row g-3">
+            <div class="col-md-6">
+              <div class="form-floating">
+                <input type="text" class="form-control" id="floatingUsername" placeholder="Your User name" value="{{ username }}">
+                <label for="floatingUsername">User name</label>
+              </div>
             </div>
-          </div>
-          <div class="col-md-6">
-            <div class="form-floating">
-              <input type="email" class="form-control" id="floatingEmail" placeholder="Email">
-              <label for="floatingEmail">Email</label>
+            <div class="col-md-6">
+              <div class="form-floating">
+                <input type="email" class="form-control" id="floatingEmail" placeholder="Your Email" value="{{ email }}">
+                <label for="floatingEmail">Your Email</label>
+              </div>
             </div>
-          </div>
-          <div class="col-md-6">
-            <div class="form-floating">
-              <input type="password" class="form-control" id="floatingPassword" placeholder="Contraseña">
-              <label for="floatingPassword">Contraseña</label>
+            <div class="col-md-12">
+              <div class="form-floating">
+                <input type="text" class="form-control" id="floatingDatacenter" placeholder="Your Datacenter" value="{{ datacenter.nombre }}">
+                <label for="floatingDatacenter">Datacenter</label>
+              </div>
             </div>
-          </div>
-          <div class="col-md-12">
-            <div class="form-floating">
-              <input type="text" class="form-control" id="floatingName" placeholder="Datacenter">
-              <label for="floatingName">Datacenter</label>
-            </div>
-          </div>
-          
-          <div class="text-center">
-            <button type="submit" class="btn btn-success">Confirmar</button>
-            <button type="reset" class="btn btn-danger">Cancelar</button>
-          </div>
-        </form><!-- End floating Labels Form -->
-
+          </form>
+        </fieldset>
       </div>
     </div>
-
   </div>
 
   <div class="col-lg-6">
-
     <div class="card">
       <div class="card-body">
-        <h5 class="card-title">Bitácora</h5>
-
+        <h5 class="card-title">Logbook</h5>
         <!-- Floating Labels Form -->
-        <form class="row g-3">
+        <form method="POST" class="row g-3">
+          {% csrf_token %}
           <div class="col-12">
             <div class="form-floating">
-              <textarea class="form-control" placeholder="Bitácora" id="floatingTextarea" style="height: 200px;"></textarea>
-              <label for="floatingTextarea">Bitácora</label>
+              <textarea 
+                class="form-control" 
+                placeholder="Bitácora" 
+                id="floatingTextarea" 
+                name="bitacora"
+                style="height: 200px;"></textarea>
+              <label for="floatingTextarea">Logbook</label>
             </div>
           </div>
           <div class="text-center">
-            <button type="submit" class="btn btn-primary">Envíar</button>
-            <button type="reset" class="btn btn-danger">Cancelar</button>
+            <button type="submit" class="btn btn-primary">Send</button>
+            <button type="reset" class="btn btn-danger">Cancel</button>
           </div>
-        </form><!-- End floating Labels Form -->
-
+        </form>
       </div>
     </div>
-
   </div>
 </div>
+
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+  <div id="successToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+      <img src="https://via.placeholder.com/20" class="rounded me-2" alt="Ícono">
+      <strong class="me-auto">Notificación</strong>
+      <small>Justo ahora</small>
+      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Cerrar"></button>
+    </div>
+    <div class="toast-body">
+      La bitácora se ha enviado correctamente.
+    </div>
+  </div>
+</div>
+
+
+
 {% endblock %}

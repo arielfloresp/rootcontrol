@@ -276,7 +276,7 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link " href="dash.html">
+        <a class="nav-link " href="{% url 'dash'%}">
           <i class="bi bi-grid"></i>
           <span>Dashboard</span>
         </a>
@@ -487,6 +487,17 @@
   </footer><!-- End Footer -->
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  {% comment %} for: message send logbook {% endcomment %}
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Comprueba si hay un mensaje de éxito en la sesión de Django
+      {% if messages %}
+        var toastEl = document.getElementById('successToast');
+        var toast = new bootstrap.Toast(toastEl);
+        toast.show();
+      {% endif %}
+    });
+  </script>
 
   <!-- Vendor JS Files -->
   <script src="{% static 'assets/vendor/apexcharts/apexcharts.min.js' %}"></script>
